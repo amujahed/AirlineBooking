@@ -12,13 +12,20 @@ import java.util.stream.Collectors;
 @Service
 public class FlightSearchService {
 
-    public List<Flight> searchFlights(SearchCriteria searchCriteria)
+    public List<FlightUI> searchFlights(SearchCriteria searchCriteria)
     {
         List<FlightUI> flightUIList=new ArrayList<FlightUI>();
-        List<Flight> flightList= FlightRepository.getAllFlights();
-
-        return flightList.stream()
+        List<Flight> totalFlightList= FlightRepository.getAllFlights();
+        List<Flight> flightList=new ArrayList<Flight>();
+        flightList= totalFlightList.stream()
                 .filter(flight ->flight.runBetweenSourceDestination(searchCriteria.getSource(),searchCriteria.getDestination()))
+                .filter(flight ->flight.runOnTravelDate(searchCriteria.getTravelDate()))
                 .collect(Collectors.toList());
+
+       for(Flight flight:flightList)
+       {
+           flightUIList.add(new FlightUI(flight,searchCriteria.getTravelDate()));
+       }
+        return flightUIList;
     }
 }

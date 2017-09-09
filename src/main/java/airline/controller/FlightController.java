@@ -2,6 +2,7 @@ package airline.controller;
 
 
 import airline.model.Flight;
+import airline.model.FlightUI;
 import airline.model.SearchCriteria;
 import airline.repository.CityRepository;
 import airline.service.FlightSearchService;
@@ -34,8 +35,8 @@ public class FlightController {
     @RequestMapping(value="/searchFlights",method= RequestMethod.POST)
     public String searchFlights(@ModelAttribute(value="searchCriteria")SearchCriteria searchCriteria, Model model)
     {
-        List<Flight> flightList=flightSearchService.searchFlights(searchCriteria);
-        model.addAttribute("flightSearchResultList",flightList);
+        List<FlightUI> flightUIList=flightSearchService.searchFlights(searchCriteria);
+        model.addAttribute("flightSearchResultList",flightUIList);
         model.addAttribute("citiesList", CityRepository.getCitiesList());
         return  "flightSearch";
     }

@@ -1,11 +1,29 @@
 package airline.model;
 
 import airline.util.NullCheck;
+
+import java.time.LocalDate;
+import java.util.List;
+
 public class Flight {
 
 
     private int flightId;
     private String flightNo;
+    private String source;
+    private String destination;
+    private List<String> daysOfWeekList;
+    private Airplane airplane;
+
+    public Flight(int flightId,String flightNo,String source,String destination,List<String> daysOfWeekList,Airplane airplane)
+    {
+        this.flightId=flightId;
+        this.flightNo=flightNo;
+        this.source=source;
+        this.destination=destination;
+        this.daysOfWeekList=daysOfWeekList;
+        this.airplane=airplane;
+    }
 
     public int getFlightId() {
         return flightId;
@@ -24,18 +42,6 @@ public class Flight {
         this.flightNo = flightNo;
     }
 
-    private String source;
-    private String destination;
-    private Airplane airplane;
-
-    public Flight(int flightId,String flightNo,String source,String destination,Airplane airplane)
-    {
-        this.flightId=flightId;
-        this.flightNo=flightNo;
-        this.source=source;
-        this.destination=destination;
-        this.airplane=airplane;
-    }
     public String getSource() {
         return source;
     }
@@ -70,5 +76,13 @@ public class Flight {
         }
 
         return  run;
+    }
+    public boolean runOnTravelDate(LocalDate travelDate)
+    {
+        boolean run=false;
+        String dayOfWeek=travelDate.getDayOfWeek().toString();
+        if(daysOfWeekList.contains(dayOfWeek))
+            run=true;
+        return run;
     }
 }

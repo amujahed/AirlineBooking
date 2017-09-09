@@ -32,21 +32,27 @@
             </td>
             <td width="20px"></td>
             <td>
+                <label>Date</label>
+                <input type="date" th:field="*{travelDateStr}"/>
+            </td>
+            <td>
                 <input type="submit" value="Submit"/>
             </td>
         </tr>
     </table>
-    <table>
+    <table border="1">
         <tr>
             <th th:text="Flight_Number"></th>
             <th th:text="Source"></th>
             <th th:text="Destination"></th>
+            <th th:text="Travel_Date"></th>
 
         </tr>
-        <tr th:each ="flight:${flightSearchResultList}">
-            <td th:text="${flight.flightNo}"/>
-            <td th:text="${flight.source}"/>
-            <td th:text="${flight.destination}"/>
+        <tr th:each ="flightUI:${flightSearchResultList}">
+            <td th:text="${flightUI.flight.flightNo}"/>
+            <td th:text="${flightUI.flight.source}"/>
+            <td th:text="${flightUI.flight.destination}"/>
+            <td th:text="${flightUI.travelDate}"/>
 
         </tr>
     </table>
