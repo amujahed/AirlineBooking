@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Cities {
+public class CityRepository {
 
-    public static List getCities()
+    public static List getCitiesList()
     {
         List citiesList=new ArrayList();
         citiesList.add("HYD");

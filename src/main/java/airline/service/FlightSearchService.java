@@ -4,14 +4,15 @@ import airline.model.Flight;
 import airline.model.FlightUI;
 import airline.model.SearchCriteria;
 import airline.repository.FlightRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+@Service
+public class FlightSearchService {
 
-public class SearchService {
-
-    public List<Flight> searchFlights(final SearchCriteria searchCriteria)
+    public List<Flight> searchFlights(SearchCriteria searchCriteria)
     {
         List<FlightUI> flightUIList=new ArrayList<FlightUI>();
         List<Flight> flightList= FlightRepository.getAllFlights();
