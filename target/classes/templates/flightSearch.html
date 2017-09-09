@@ -9,33 +9,33 @@
 
 </body>
 <form method="post" th:action ="@{/searchFlights}" th:object="${searchCriteria}">
-<table>
-    <tr>
-        <td>
-            <label>Source</label>
-            <select th:title="Source" id="source" class="form-control" th:field="*{source}">
-                <option th:each="city : ${citiesList}"
-                        th:value="${city}"
-                        th:text="${city}">
-                </option>
-            </select>
-        </td>
-        <td width="20px"></td>
-        <td>
-            <label>Destination</label>
-            <select th:title="Destination" id="destination" class="form-control" th:field="*{destination}">
-            <option th:each="city :${citiesList}"
-                    th:value="${city}"
-                    th:text="${city}">
-            </option>
-            </select>
-        </td>
-        <td width="20px"></td>
-        <td>
-            <input type="submit" value="Submit"/>
-        </td>
-    </tr>
-</table>
+    <table>
+        <tr>
+            <td>
+                <label>Source</label>
+                <select th:title="Source" id="source" class="form-control" th:field="*{source}">
+                    <option th:each="city : ${citiesList}"
+                            th:value="${city}"
+                            th:text="${city}">
+                    </option>
+                </select>
+            </td>
+            <td width="20px"></td>
+            <td>
+                <label>Destination</label>
+                <select th:title="Destination" id="destination" class="form-control" th:field="*{destination}">
+                    <option th:each="city :${citiesList}"
+                            th:value="${city}"
+                            th:text="${city}">
+                    </option>
+                </select>
+            </td>
+            <td width="20px"></td>
+            <td>
+                <input type="submit" value="Submit"/>
+            </td>
+        </tr>
+    </table>
     <table>
         <tr>
             <th th:text="Flight_Number"></th>
