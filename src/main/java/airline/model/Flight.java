@@ -1,5 +1,6 @@
 package airline.model;
 
+import airline.repository.CityRepository;
 import airline.util.NullCheck;
 
 import java.time.LocalDate;
@@ -80,9 +81,17 @@ public class Flight {
     public boolean runOnTravelDate(LocalDate travelDate)
     {
         boolean run=false;
-        String dayOfWeek=travelDate.getDayOfWeek().toString();
-        if(daysOfWeekList.contains(dayOfWeek))
+        LocalDate currentDate=LocalDate.now();
+        //if travel date is not provided,do not search the flights using date
+        if (travelDate == null)
             run=true;
+        //flight search using the travel date applicable only for current and future dates
+        else if ( travelDate.equals(currentDate) || travelDate.isAfter(currentDate)) {
+            String dayOfWeek = travelDate.getDayOfWeek().toString();
+            if (daysOfWeekList.contains(dayOfWeek))
+                run = true;
+        }
+
         return run;
     }
     public boolean isSeatAvailable(TravelClassType travelClassType,int noOfPassengers)
@@ -92,5 +101,13 @@ public class Flight {
     public double getPrice(TravelClassType travelClassType,int noOfPassengers)
     {
         return getAirplane().getBasePrice(travelClassType,noOfPassengers);
+    }
+    public String getDisplayValueOfSource()
+    {
+        return CityRepository.getCityForCode(getSource());
+    }
+    public String getDisplayValueOfDestination()
+    {
+        return CityRepository.getCityForCode(getDestination());
     }
 }

@@ -1,4 +1,6 @@
-package airline.model;
+package airline.uimodel;
+
+import airline.model.Flight;
 
 import java.time.LocalDate;
 

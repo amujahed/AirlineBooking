@@ -1,7 +1,7 @@
 package airline.service;
 
 import airline.model.Flight;
-import airline.model.FlightUI;
+import airline.uimodel.FlightUI;
 import airline.model.SearchCriteria;
 import airline.repository.FlightRepository;
 import org.springframework.stereotype.Service;

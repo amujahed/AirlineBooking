@@ -1,5 +1,7 @@
 package airline.model;
 
+import airline.util.NullCheck;
+
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
@@ -11,7 +13,6 @@ public class SearchCriteria {
     private String source;
     private String destination;
     private  LocalDate currentDate=LocalDate.now();
-    @Future
     private LocalDate travelDate=currentDate;
     private String travelDateStr=currentDate.toString();
     private int noOfPassengers=1;
@@ -53,8 +54,10 @@ public class SearchCriteria {
 
     public void setTravelDateStr(String travelDateStr) {
         this.travelDateStr = travelDateStr;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        setTravelDate(LocalDate.parse(travelDateStr,formatter));
+        if(!NullCheck.nullCheckOnString(travelDateStr)) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            setTravelDate(LocalDate.parse(travelDateStr, formatter));
+        }
     }
 
 
