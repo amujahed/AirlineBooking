@@ -15,25 +15,25 @@ public class FlightRepository {
 
         flightList.add(new Flight(1,"VP_HYD_BLR_1","HYD","BLR",getDaysOfWeek1(),
 
-                AirplaneRepository.getAirplane("Airbus A321")));
+                AirplaneRepository.getAirplane1()));
 
         flightList.add(new Flight(2,"VP_HYD_BLR_2","HYD","BLR",getDaysOfWeek2(),
-                AirplaneRepository.getAirplane("Airbus A319 V2")));
+                AirplaneRepository.getAirplane2()));
 
         flightList.add(new Flight(3,"VP_HYD_CHN_3","HYD","CHN",getDaysOfWeek1(),
-                AirplaneRepository.getAirplane("Airbus A321")));
+                AirplaneRepository.getAirplane3()));
 
         flightList.add(new Flight(4,"VP_HYD_CHN_4","HYD","CHN",getDaysOfWeek2(),
-                AirplaneRepository.getAirplane("Airbus A319 V2")));
+                AirplaneRepository.getAirplane2()));
 
         flightList.add(new Flight(5,"VP_BLR_CHN_5","BLR","CHN",getDaysOfWeek3(),
-                AirplaneRepository.getAirplane("Airbus A321")));
+                AirplaneRepository.getAirplane2()));
 
         flightList.add(new Flight(6,"VP_BLR_CHN_6","BLR","CHN",getDaysOfWeek1(),
-                AirplaneRepository.getAirplane("Airbus A321")));
+                AirplaneRepository.getAirplane1()));
 
         flightList.add(new Flight(7,"VP_CHN_HYD_7","CHN","HYD",getDaysOfWeek3(),
-                AirplaneRepository.getAirplane("Airbus A319 V2")));
+                AirplaneRepository.getAirplane3()));
 
 
         return flightList;

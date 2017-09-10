@@ -20,11 +20,13 @@ public class FlightSearchService {
         flightList= totalFlightList.stream()
                 .filter(flight ->flight.runBetweenSourceDestination(searchCriteria.getSource(),searchCriteria.getDestination()))
                 .filter(flight ->flight.runOnTravelDate(searchCriteria.getTravelDate()))
+                .filter(flight ->flight.isSeatAvailable(searchCriteria.getTravelClassType(),searchCriteria.getNoOfPassengers()))
                 .collect(Collectors.toList());
 
        for(Flight flight:flightList)
        {
-           flightUIList.add(new FlightUI(flight,searchCriteria.getTravelDate()));
+           flightUIList.add(new FlightUI(flight,searchCriteria.getTravelDate(),searchCriteria.getNoOfPassengers(),
+                   flight.getPrice(searchCriteria.getTravelClassType(),searchCriteria.getNoOfPassengers())));
        }
         return flightUIList;
     }

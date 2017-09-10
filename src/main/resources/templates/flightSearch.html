@@ -33,7 +33,23 @@
             <td width="20px"></td>
             <td>
                 <label>Date</label>
-                <input type="date" th:field="*{travelDateStr}"/>
+                <input type="date" th:field="*{travelDateStr}"  required="required"/>
+            </td>
+            <td width="20px"></td>
+            <td>
+                <label>Travel Class</label>
+                <select th:title="TravelClass" id="travelClassType" class="form-control" th:field="*{travelClassType}" required="required">
+                    <option th:label="--Select--" value=""></option>
+                    <option th:each="travelClassType :${travelClassTypeList}"
+                            th:value="${travelClassType}"
+                            th:text="${travelClassType}">
+                    </option>
+                </select>
+            </td>
+            <td width="20px"></td>
+            <td>
+                <label>No Of Passengers</label>
+                <input type="number" th:field="*{noOfPassengers}" th:min="1"/>
             </td>
             <td>
                 <input type="submit" value="Submit"/>
@@ -46,6 +62,9 @@
             <th th:text="Source"></th>
             <th th:text="Destination"></th>
             <th th:text="Travel_Date"></th>
+            <th th:text="No_Of_Passengers"></th>
+            <th th:text="Total_Price"></th>
+
 
         </tr>
         <tr th:each ="flightUI:${flightSearchResultList}">
@@ -53,6 +72,8 @@
             <td th:text="${flightUI.flight.source}"/>
             <td th:text="${flightUI.flight.destination}"/>
             <td th:text="${flightUI.travelDate}"/>
+            <td th:text="${flightUI.noOfPassengers}"/>
+            <td th:text="${flightUI.totalPrice}"/>
 
         </tr>
     </table>

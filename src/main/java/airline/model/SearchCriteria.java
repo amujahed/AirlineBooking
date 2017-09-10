@@ -1,14 +1,51 @@
 package airline.model;
 
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Past;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class SearchCriteria {
-
     private String source;
     private String destination;
-    private LocalDate travelDate;
-    private String travelDateStr;
+    private  LocalDate currentDate=LocalDate.now();
+    @Future
+    private LocalDate travelDate=currentDate;
+    private String travelDateStr=currentDate.toString();
+    private int noOfPassengers=1;
+    private TravelClassType travelClassType;
+
+    public LocalDate getCurrentDate() {
+        return currentDate;
+    }
+
+    public void setCurrentDate(LocalDate currentDate) {
+        this.currentDate = currentDate;
+    }
+
+
+
+
+    public TravelClassType getTravelClassType() {
+        return travelClassType;
+    }
+
+    public void setTravelClassType(TravelClassType travelClassType) {
+        this.travelClassType = travelClassType;
+    }
+
+
+    public int getNoOfPassengers() {
+        return noOfPassengers;
+    }
+
+    public void setNoOfPassengers(int noOfPassengers) {
+        this.noOfPassengers = noOfPassengers;
+    }
+
+
 
     public String getTravelDateStr() {
         return travelDateStr;

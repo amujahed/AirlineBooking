@@ -85,4 +85,12 @@ public class Flight {
             run=true;
         return run;
     }
+    public boolean isSeatAvailable(TravelClassType travelClassType,int noOfPassengers)
+    {
+            return getAirplane().isSeatAvailable(travelClassType,noOfPassengers);
+    }
+    public double getPrice(TravelClassType travelClassType,int noOfPassengers)
+    {
+        return getAirplane().getBasePrice(travelClassType,noOfPassengers);
+    }
 }

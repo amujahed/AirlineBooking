@@ -5,6 +5,7 @@ import airline.model.Flight;
 import airline.model.FlightUI;
 import airline.model.SearchCriteria;
 import airline.repository.CityRepository;
+import airline.repository.TravelClassTypeRepository;
 import airline.service.FlightSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -30,6 +31,7 @@ public class FlightController {
     public String welcomeMessage(Model model) {
         model.addAttribute("citiesList", CityRepository.getCitiesList());
         model.addAttribute("searchCriteria",new SearchCriteria());
+        model.addAttribute("travelClassTypeList", TravelClassTypeRepository.getTravelClassTypeList());
         return "flightSearch";
     }
     @RequestMapping(value="/searchFlights",method= RequestMethod.POST)
@@ -38,6 +40,7 @@ public class FlightController {
         List<FlightUI> flightUIList=flightSearchService.searchFlights(searchCriteria);
         model.addAttribute("flightSearchResultList",flightUIList);
         model.addAttribute("citiesList", CityRepository.getCitiesList());
+        model.addAttribute("travelClassTypeList", TravelClassTypeRepository.getTravelClassTypeList());
         return  "flightSearch";
     }
 }
