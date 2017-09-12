@@ -54,4 +54,5 @@ public class TravelClass {
     {
         return getNoOfAvailableSeats() >0;
     }
+
 }

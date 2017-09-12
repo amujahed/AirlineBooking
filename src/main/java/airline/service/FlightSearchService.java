@@ -21,12 +21,17 @@ public class FlightSearchService {
                 .filter(flight ->flight.runBetweenSourceDestination(searchCriteria.getSource(),searchCriteria.getDestination()))
                 .filter(flight ->flight.runOnTravelDate(searchCriteria.getTravelDate()))
                 .filter(flight ->flight.isSeatAvailable(searchCriteria.getTravelClassType(),searchCriteria.getNoOfPassengers()))
+                .filter(flight ->flight.isOpen(searchCriteria.getTravelClassType(),searchCriteria.getTravelDate()))
                 .collect(Collectors.toList());
 
        for(Flight flight:flightList)
        {
+//           flightUIList.add(new FlightUI(flight,searchCriteria.getTravelDate(),searchCriteria.getNoOfPassengers(),
+//                   flight.getPrice(searchCriteria.getTravelClassType(),searchCriteria.getNoOfPassengers())));
+
            flightUIList.add(new FlightUI(flight,searchCriteria.getTravelDate(),searchCriteria.getNoOfPassengers(),
-                   flight.getPrice(searchCriteria.getTravelClassType(),searchCriteria.getNoOfPassengers())));
+                   flight.getTotalFare(searchCriteria.getTravelClassType(),searchCriteria.getNoOfPassengers(),searchCriteria.getTravelDate())
+                   ));
        }
         return flightUIList;
     }

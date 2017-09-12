@@ -33,9 +33,9 @@ public class TravelClassRepository {
     public static List<TravelClass> getTravelClass1(   )
     {
         List<TravelClass> travelClassList=new ArrayList<TravelClass>();
-        travelClassList.add(new TravelClass(TravelClassType.ECONOMY,noOfEconomySeats1,193,economyBasePrice1));
+        travelClassList.add(new TravelClass(TravelClassType.ECONOMY,noOfEconomySeats1,192,economyBasePrice1));
         travelClassList.add(new TravelClass(TravelClassType.BUSINESS,noOfBusinessSeats1,30,businessBasePrice1));
-        travelClassList.add(new TravelClass(TravelClassType.FIRST   ,noOfFirstSeats1,4,firstsBasePrice1));
+        travelClassList.add(new TravelClass(TravelClassType.FIRST   ,noOfFirstSeats1,2,firstsBasePrice1));
         return travelClassList;
     }
 
