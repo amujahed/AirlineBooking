@@ -15,7 +15,7 @@ public class CityRepository {
         citiesList.add("BLR");
         return citiesList;
     }
-    public static HashMap getCititesHashMap()
+    public static HashMap getCitiesHashMap()
     {
         citiesMap.put("HYD","Hyderabad");
         citiesMap.put("CHN","Chennai");
@@ -24,6 +24,8 @@ public class CityRepository {
     }
     public static String getCityForCode(String cityCode)
     {
+        if(citiesMap.isEmpty())
+            getCitiesHashMap();
         return (String) citiesMap.get(cityCode);
     }
 }

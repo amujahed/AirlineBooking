@@ -1,13 +1,14 @@
 package airline.model;
 
+import airline.model.pricing.BusinessClassPricing;
+import airline.model.pricing.EconomyClassPricing;
+import airline.model.pricing.FirstClassPricing;
+import airline.model.pricing.Pricing;
 import airline.repository.CityRepository;
 import airline.util.NullCheck;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.List;
-
-import static java.time.temporal.ChronoUnit.DAYS;
 
 public class Flight {
 
@@ -31,6 +32,13 @@ public class Flight {
         this.airplane=airplane;
     }
 
+    public List<String> getDaysOfWeekList() {
+        return daysOfWeekList;
+    }
+
+    public void setDaysOfWeekList(List<String> daysOfWeekList) {
+        this.daysOfWeekList = daysOfWeekList;
+    }
 
     public LocalDate getTravelDate() {
         return travelDate;
@@ -129,11 +137,9 @@ public class Flight {
 
     public boolean isOpen(TravelClassType travelClassType,LocalDate travelDate)
     {
-        boolean isOpen=true;
-        LocalDate currentDate=LocalDate.now();
-        if(travelClassType.equals(TravelClassType.FIRST) && DAYS.between(currentDate,travelDate) >10)
-            isOpen=false;
-        return isOpen;
+
+       return getAirplane().getTravelClass(travelClassType).isOpen(travelDate);
+
     }
     public double getTotalFare(TravelClassType travelClassType,int noOfPassengers,LocalDate travelDate)
     {

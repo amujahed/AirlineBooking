@@ -1,7 +1,10 @@
-package airline.model;
+package airline.model.pricing;
+
+import airline.model.Flight;
+import airline.model.TravelClassType;
 
 public abstract class Pricing {
-    private  TravelClassType travelClassType;
+    private TravelClassType travelClassType;
 
     public Pricing (TravelClassType travelClassType)
     {

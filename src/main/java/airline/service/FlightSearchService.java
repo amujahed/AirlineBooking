@@ -35,4 +35,11 @@ public class FlightSearchService {
        }
         return flightUIList;
     }
+
+    public List<Flight> getAllFlights()
+    {
+        List<Flight> flightList=new ArrayList<Flight>();
+        flightList=FlightRepository.getAllFlights();
+        return flightList;
+    }
 }

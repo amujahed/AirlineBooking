@@ -1,6 +1,11 @@
-package airline.model;
+package airline.model.pricing;
 
-public class EconomyClassPricing extends Pricing{
+import airline.model.Flight;
+import airline.model.TravelClass;
+import airline.model.TravelClassType;
+import airline.model.pricing.Pricing;
+
+public class EconomyClassPricing extends Pricing {
 
     public EconomyClassPricing(TravelClassType travelClassType) {
         super(travelClassType);

@@ -1,6 +1,7 @@
 package airline.controller;
 
 
+import airline.model.Flight;
 import airline.uimodel.FlightUI;
 import airline.model.SearchCriteria;
 import airline.repository.CityRepository;
@@ -27,7 +28,7 @@ public class FlightController {
     @RequestMapping("/")
     public String welcomeMessage(Model model) {
         model.addAttribute("citiesList", CityRepository.getCitiesList());
-        model.addAttribute("citiesMap", CityRepository.getCititesHashMap());
+        model.addAttribute("citiesMap", CityRepository.getCitiesHashMap());
         model.addAttribute("searchCriteria",new SearchCriteria());
         model.addAttribute("travelClassTypeList", TravelClassTypeRepository.getTravelClassTypeList());
         return "flightSearch";
@@ -38,8 +39,15 @@ public class FlightController {
         List<FlightUI> flightUIList=flightSearchService.searchFlights(searchCriteria);
         model.addAttribute("flightSearchResultList",flightUIList);
         model.addAttribute("citiesList", CityRepository.getCitiesList());
-        model.addAttribute("citiesMap", CityRepository.getCititesHashMap());
+        model.addAttribute("citiesMap", CityRepository.getCitiesHashMap());
         model.addAttribute("travelClassTypeList", TravelClassTypeRepository.getTravelClassTypeList());
         return  "flightSearch";
+    }
+
+    @RequestMapping("/allFlights")
+    public String listAllFlightsDetails(Model model) {
+        List<Flight> flightList=flightSearchService.getAllFlights();
+        model.addAttribute("flightList",flightList);
+        return "flights";
     }
 }

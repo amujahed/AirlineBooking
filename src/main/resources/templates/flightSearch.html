@@ -3,15 +3,51 @@
 <head>
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <style>
+table {
+
+
+
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+input[type=text,number], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: grey;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+</style>
 </head>
 <body>
 <p th:text = "'Welcome to TWAirline!!!'"/>
 
 </body>
 <form method="post" th:action ="@{/searchFlights}" th:object="${searchCriteria}">
-    <table>
-        <tr>
-            <td>
+
                 <label>Source</label>
                 <select th:title="Source" id="source" class="form-control" th:field="*{source}">
                     <option th:each="city : ${citiesMap}"
@@ -19,9 +55,6 @@
                             th:text="${city.value}">
                     </option>
                 </select>
-            </td>
-            <td width="20px"></td>
-            <td>
                 <label>Destination</label>
                 <select th:title="Destination" id="destination" class="form-control" th:field="*{destination}">
                     <option th:each="city :${citiesMap}"
@@ -29,16 +62,8 @@
                             th:text="${city.value}">
                     </option>
                 </select>
-            </td>
-            <td width="20px"></td>
-            <td>
                 <label>Date</label>
                 <input type="date" th:field="*{travelDateStr}"/>
-            </td>
-            <td width="20px"></td>
-        </tr>
-        <tr>
-            <td>
                 <label>Travel Class</label>
                 <select th:title="TravelClass" id="travelClassType" class="form-control" th:field="*{travelClassType}" required="required">
                     <option th:label="--Select--" value=""></option>
@@ -47,27 +72,18 @@
                             th:text="${travelClassType}">
                     </option>
                 </select>
-            </td>
-            <td width="20px"></td>
-            <td>
                 <label>No Of Passengers</label>
                 <input type="number" th:field="*{noOfPassengers}" th:min="1"/>
-            </td>
-        </tr>
-        <tr>
-            <td>
+
                 <input type="submit" value="Submit"/>
-            </td>
-        </tr>
-    </table>
     <table border="1">
         <tr>
-            <th th:text="Flight_Number"></th>
-            <th th:text="Source"></th>
-            <th th:text="Destination"></th>
-            <th th:text="Travel_Date"></th>
-            <th th:text="No_Of_Passengers"></th>
-            <th th:text="Total_Price"></th>
+            <td>Flight Number</td>
+            <td>Source</td>
+            <td>Destination</td>
+            <td>Travel Date</td>
+            <td>No Of Passengers</td>
+            <td>Total Price</td>
 
 
         </tr>

@@ -1,5 +1,10 @@
 package airline.model;
 
+import java.time.LocalDate;
+
+import static java.time.temporal.ChronoUnit.DAYS;
+import static java.time.temporal.ChronoUnit.WEEKS;
+
 public class TravelClass {
     private TravelClassType travelClassType;
     private int noOfSeats;
@@ -53,6 +58,22 @@ public class TravelClass {
     public boolean isAvailable()
     {
         return getNoOfAvailableSeats() >0;
+    }
+
+    public boolean isOpen(LocalDate travelDate)
+    {
+        boolean isOpen=true;
+        LocalDate currentDate=LocalDate.now();
+        if(travelClassType.equals(TravelClassType.FIRST))
+        {
+            if( DAYS.between(currentDate,travelDate) >10)
+                isOpen=false;
+        }
+        else if(travelClassType.equals(TravelClassType.BUSINESS)) {
+            if (WEEKS.between(currentDate, travelDate) > 4)
+                isOpen = false;
+        }
+        return isOpen;
     }
 
 }

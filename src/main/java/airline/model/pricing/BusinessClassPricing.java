@@ -1,4 +1,8 @@
-package airline.model;
+package airline.model.pricing;
+
+import airline.model.Flight;
+import airline.model.TravelClassType;
+import airline.model.pricing.Pricing;
 
 import java.time.DayOfWeek;
 
