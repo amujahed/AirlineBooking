@@ -19,9 +19,6 @@ public class Flight {
     private List<String> daysOfWeekList;
     private LocalDate travelDate;
     private Airplane airplane;
-    private EconomyClassPricing economyPricing;
-    private BusinessClassPricing businessClassPricing;
-    private FirstClassPricing firstClassPricing;
 
 
     public Flight(int flightId, String flightNo, String source, String destination, List<String> daysOfWeekList, Airplane airplane)
@@ -32,18 +29,6 @@ public class Flight {
         this.destination=destination;
         this.daysOfWeekList=daysOfWeekList;
         this.airplane=airplane;
-    }
-
-    public EconomyClassPricing getEconomyPricing() {
-        return economyPricing;
-    }
-
-    public BusinessClassPricing getBusinessClassPricing() {
-        return businessClassPricing;
-    }
-
-    public FirstClassPricing getFirstClassPricing() {
-        return firstClassPricing;
     }
 
 

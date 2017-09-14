@@ -9,7 +9,7 @@ public class EconomyClassPricing extends Pricing{
     @Override
     public  int getSurplusFarePercentagePerSeat(Flight flight) {
 
-       TravelClass travelClass= flight.getAirplane().getTravelClass(getTravelClassType());
+       TravelClass travelClass= flight.getAirplane().getTravelClass(TravelClassType.ECONOMY);
        int noOfBookedSeatsPercentage=(travelClass.getNoOfBookedSeats()*100)/travelClass.getNoOfSeats();
        int percentage=0;
 
